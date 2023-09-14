@@ -1,44 +1,31 @@
-#include <stdio.h>
-
-int main()
+#include<stdio.h>
+int main(){
+int n,sum;
+printf("Enter the number of elements to be stored : ");
+scanf("%d",&n);
+int arr[n];
+printf("Enter the elements in the array : \n");
+for(int i=0;i<n;i++)
 {
-    int n;
-    printf("Enter the size of the array: ");
-    scanf("%d", &n);
-
-    int arr[n];
-    printf("Enter the elements of the array:\n");
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &arr[i]);
-    }
-    int sum;
-    printf("Enter the target sum: ");
-    scanf("%d", &sum);
-
-    int temp = arr[0];
-    int i = 0;
-
-    for (int j = 1; j <= n; j++)
-    {
-        while (temp > sum && i < j - 1)
-        {
-            temp -= arr[i];
-            i++;
-        }
-
-        if (temp == sum)
-        {
-            printf("Subarray found between indices %d and %d\n", i, j - 1);
-            return 0;
-        }
-
-        if (j < n)
-        {
-            temp += arr[j];
-        }
-    }
-
-    printf("No subarray found with the given sum.\n");
-    return 0;
+scanf("%d",&arr[i]);
+}
+printf("Enter the sum : \n");
+scanf("%d",&sum);
+int temp=arr[0];
+int count=1;
+for(int i=0;i<n;i++)
+{
+for(count;temp>sum && count<i;count++)
+{
+temp=temp-arr[i+1];
+}
+if(temp==sum)
+{
+printf("Sum found between indices %d and %d \n",count,i);
+}
+if(count<n)
+{
+temp=temp+arr[i+1];
+}
+}
 }
